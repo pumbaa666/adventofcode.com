@@ -2,7 +2,7 @@ package ch.correvon.adventofcode.day02.first;
 
 public class Round
 {
-	public Round(Hand me, Hand opponent)
+	public Round(Hand me, OpponentHand opponent)
 	{
 		this.me = me;
 		this.opponent = opponent;
@@ -13,14 +13,14 @@ public class Round
 		int objectScore = me.getValue();
 		int winScore = 0;
 		
-		if(me == opponent)
+		if(me.getValue() == opponent.getValue())
 			winScore = 3;
 		else		
 			switch(me)
 			{
-				case ROCK : winScore = opponent == Hand.CISOR ? 6 : 0; break;
-				case PAPER : winScore = opponent == Hand.ROCK ? 6 : 0; break;
-				case CISOR : winScore = opponent == Hand.PAPER ? 6 : 0; break;
+				case ROCK : winScore = opponent == OpponentHand.CISOR ? 6 : 0; break;
+				case PAPER : winScore = opponent == OpponentHand.ROCK ? 6 : 0; break;
+				case CISOR : winScore = opponent == OpponentHand.PAPER ? 6 : 0; break;
 			}
 		
 		System.out.println("This round score : " + (objectScore + winScore) + " ("+objectScore+", "+winScore+")");
@@ -28,5 +28,5 @@ public class Round
 	}
 
 	private Hand me;
-	private Hand opponent;
+	private OpponentHand opponent;
 }

@@ -2,7 +2,7 @@ package ch.correvon.adventofcode.day02.second;
 
 public class Round
 {
-	public Round(Hand opponent, Result result)
+	public Round(Hand opponent, RoundResult result)
 	{
 		this.opponent = opponent;
 		this.result = result;
@@ -48,5 +48,5 @@ public class Round
 	}
 
 	private Hand opponent;
-	private Result result;
+	private RoundResult result;
 }

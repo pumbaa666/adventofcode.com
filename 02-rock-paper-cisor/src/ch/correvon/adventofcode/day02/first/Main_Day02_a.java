@@ -42,7 +42,7 @@ public class Main_Day02_a
 					continue;
 				}
 				
-				Round round = new Round(Hand.parseEnum(roundArray[1]), Hand.parseEnum(roundArray[0]));
+				Round round = new Round(Hand.parseEnum(roundArray[1]), OpponentHand.parseEnum(roundArray[0]));
 				rounds.add(round);
 				lineNum++;
 			}
