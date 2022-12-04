@@ -1,4 +1,4 @@
-package ch.correvon.adventofcode.day04.first;
+package ch.correvon.adventofcode.day04.second;
 
 public class Shift
 {

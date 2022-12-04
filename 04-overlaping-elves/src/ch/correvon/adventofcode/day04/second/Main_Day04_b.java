@@ -1,23 +1,23 @@
-package ch.correvon.adventofcode.day04.first;
+package ch.correvon.adventofcode.day04.second;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-public class Main_Day04_a
+public class Main_Day04_b
 {
 
 	public static void main(String[] args)
 	{
 		int overlapping = parseFile(getFileStream("/ch/correvon/adventofcode/day04/data.txt"));
 		System.out.println("Overlapping elfes : " + overlapping);
-		// Overlapping elfes : 573
+		// Overlapping elfes : 867
 	}
 
 	private static InputStream getFileStream(String fileName)
 	{
-		InputStream inputStream = Main_Day04_a.class.getResourceAsStream(fileName);
+		InputStream inputStream = Main_Day04_b.class.getResourceAsStream(fileName);
 		if(inputStream == null)
 			System.err.println("Unable to open " + fileName);
 		return inputStream;
@@ -39,6 +39,8 @@ public class Main_Day04_a
 					System.err.println("Invalid line " + lineNum + " : " + line);
 					continue;
 				}
+				
+				System.out.println("Looking at : " + line);
 
 				Shift shift1 = Shift.parseShift(split[0]);
 				Shift shift2 = Shift.parseShift(split[1]);
@@ -61,6 +63,10 @@ public class Main_Day04_a
 	
 	private static final boolean isOverlapping(Shift shift1, Shift shift2)
 	{
-	    return (shift1.getStart() >= shift2.getStart() && shift1.getEnd() <= shift2.getEnd()) || (shift2.getStart() >= shift1.getStart() && shift2.getEnd() <= shift1.getEnd());
+	    return (shift1.getStart() >= shift2.getStart() && shift1.getEnd() <= shift2.getEnd()
+	    			|| (shift2.getStart() >= shift1.getStart() && shift2.getEnd() <= shift1.getEnd())
+	    			|| (shift1.getEnd() >= shift2.getStart() && shift1.getEnd() <= shift2.getEnd())
+	    			|| (shift1.getStart() >= shift2.getStart() && shift1.getStart() <= shift2.getEnd())
+	    			);
 	}
 }
