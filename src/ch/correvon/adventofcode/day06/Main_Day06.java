@@ -47,7 +47,7 @@ public class Main_Day06
 				for(char c:line.toCharArray())
 				{
 					buffer[i%bufferSize] = c;
-					if(checkBufferUnicity(buffer, bufferSize))
+					if(checkBufferUnicity(buffer))
 					{
 					    Stream<Character> charStream = Arrays.stream(buffer);
 					    String bufferEnString = charStream.map(String::valueOf).collect(Collectors.joining());
@@ -69,18 +69,10 @@ public class Main_Day06
 		return i;
 	}
 	
-	public static boolean checkBufferUnicity(Character[] arr, int minimalBufferSize)
+	public static boolean checkBufferUnicity(Character[] arr)
     {
-		if(arr.length < minimalBufferSize)
-			return false;
-		for(int i = 0; i < minimalBufferSize; i++)
-			if(arr[i] ==  null)
-				return false;
-		
-        // Put all array elements in a HashSet
-		Set<Character> s = new HashSet<Character>(Arrays.asList(arr));
- 
-        // If all elements are distinct, size of HashSet should be same array.
-        return (s.size() == arr.length);
+		Set<Character> set = new HashSet<Character>(Arrays.asList(arr)); // Put all array elements in a HashSet 
+		set.remove(null); // Don't acknoledge nulls
+        return (set.size() == arr.length); // If all elements are distinct, size of HashSet should be same array.
     }
 }
