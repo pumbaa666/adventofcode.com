@@ -72,7 +72,7 @@ public class Main_Day06
 	public static boolean checkBufferUnicity(Character[] arr)
     {
 		Set<Character> set = new HashSet<Character>(Arrays.asList(arr)); // Put all array elements in a HashSet 
-		set.remove(null); // Don't acknoledge nulls
+		set.remove(null); // Don't acknowledge nulls
         return (set.size() == arr.length); // If all elements are distinct, size of HashSet should be same array.
     }
 }
